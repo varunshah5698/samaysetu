@@ -1,0 +1,9 @@
+import { describe, expect, it } from "vitest";
+import { scoreDeliverySlots } from "./deliveryEngine";
+
+describe("live delivery scoring", () => {
+  it("changes scores when active workload changes", () => { const quiet = scoreDeliverySlots({ day: "Wednesday", time: "10:30", festival: false, signals: { activeCount: 0, completed24h: 0, rescheduled24h: 0 } }); const busy = scoreDeliverySlots({ day: "Wednesday", time: "10:30", festival: false, signals: { activeCount: 6, completed24h: 0, rescheduled24h: 0 } }); expect(quiet[0].score).toBeGreaterThan(busy[0].score); });
+  it("offers clear two-hour delivery windows", () => { const slots = scoreDeliverySlots({ day: "Wednesday", time: "10:30", festival: false, signals: { activeCount: 0, completed24h: 0, rescheduled24h: 0 } }); expect(slots.map(slot => slot.range)).toEqual(["09:00 — 11:00", "11:00 — 13:00", "13:00 — 15:00", "15:00 — 17:00", "17:00 — 19:00"]); });
+  it("includes event-driven reasoning", () => { expect(scoreDeliverySlots({ day: "Monday", time: "10:30", festival: true, signals: { activeCount: 1, completed24h: 3, rescheduled24h: 1 } })[0].reasons.join(" ")).toContain("last 24 hours"); });
+  it("reduces route confidence when real operational conditions are adverse", () => { const base = scoreDeliverySlots({ day: "Wednesday", time: "10:30", festival: false, signals: { activeCount: 0, completed24h: 0, rescheduled24h: 0 } }); const constrained = scoreDeliverySlots({ day: "Wednesday", time: "10:30", festival: false, signals: { activeCount: 0, completed24h: 0, rescheduled24h: 0 }, operational: { weather: { label: "Wet-route watch", scoreImpact: 5 }, traffic: { label: "Traffic delay factored", scoreImpact: 4 } } }); expect(constrained[0].score).toBeLessThan(base[0].score); expect(constrained[0].reasons.join(" ")).toContain("Wet-route watch"); });
+});

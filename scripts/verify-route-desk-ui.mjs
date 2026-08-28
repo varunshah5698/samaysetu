@@ -1,0 +1,34 @@
+const preview = "https://3000-ilt096yviygcynxyjrhlg-b6e46a59.us4.manus.computer/postman?demo=1";
+const mobile = process.argv.includes("--mobile");
+const targets = await (await fetch("http://127.0.0.1:9222/json")).json();
+const target = targets.find(item => item.type === "page" && item.webSocketDebuggerUrl);
+if (!target) throw new Error("No active preview browser page was available.");
+const socket = new WebSocket(target.webSocketDebuggerUrl);
+await new Promise((resolve, reject) => { socket.addEventListener("open", resolve, { once: true }); socket.addEventListener("error", reject, { once: true }); });
+let nextId = 1;
+const pending = new Map();
+socket.addEventListener("message", event => { const message = JSON.parse(event.data); const resolve = pending.get(message.id); if (resolve) { pending.delete(message.id); resolve(message); } });
+const command = (method, params = {}) => new Promise((resolve, reject) => { const id = nextId++; pending.set(id, message => message.error ? reject(new Error(message.error.message)) : resolve(message.result)); socket.send(JSON.stringify({ id, method, params })); });
+const evaluate = async expression => (await command("Runtime.evaluate", { expression, awaitPromise: true, returnByValue: true })).result.value;
+const wait = ms => new Promise(resolve => setTimeout(resolve, ms));
+try {
+  await command("Page.enable");
+  if (mobile) await command("Emulation.setDeviceMetricsOverride", { width: 390, height: 844, deviceScaleFactor: 1, mobile: true });
+  await command("Page.navigate", { url: preview });
+  await wait(1800);
+  const before = await evaluate(`(() => ({ dots: Number(document.querySelector('.route-stats strong')?.textContent?.match(/\\d+/)?.[0] ?? 0), selected: document.querySelector('[aria-pressed="true"]')?.innerText ?? '', viewport: [window.innerWidth, window.innerHeight] }))()`);
+  const first = await evaluate(`(() => { const row = document.querySelector('.stop-row'); if (!row) return null; row.click(); return row.innerText; })()`);
+  await wait(300);
+  const afterFirst = await evaluate(`(() => ({ selected: document.querySelector('[aria-pressed="true"]')?.innerText ?? '', route: document.querySelector('.route-change')?.innerText ?? '' }))()`);
+  const completed = await evaluate(`(() => { const button = document.querySelector('.primary-action'); if (!button || button.disabled) return false; button.click(); return true; })()`);
+  await wait(950);
+  const afterCompletion = await evaluate(`(() => ({ selectedDots: document.querySelectorAll('[aria-pressed="true"]').length, route: document.querySelector('.route-change')?.innerText ?? '' }))()`);
+  const next = await evaluate(`(() => { const row = document.querySelector('.stop-row'); if (!row) return null; row.click(); return row.innerText; })()`);
+  await wait(350);
+  const afterNext = await evaluate(`(() => ({ selected: document.querySelector('[aria-pressed="true"]')?.innerText ?? '', selectedDots: document.querySelectorAll('[aria-pressed="true"]').length, route: document.querySelector('.route-change')?.innerText ?? '', dots: Number(document.querySelector('.route-stats strong')?.textContent?.match(/\\d+/)?.[0] ?? 0) }))()`);
+  const cleared = await evaluate(`(() => { const row = document.querySelector('[aria-pressed="true"]'); if (!row) return false; row.click(); return true; })()`);
+  await wait(300);
+  const afterClear = await evaluate(`(() => ({ selectedDots: document.querySelectorAll('[aria-pressed="true"]').length, route: document.querySelector('.route-change')?.innerText ?? '', distance: document.querySelectorAll('.route-stats strong')[1]?.textContent ?? '' }))()`);
+  console.log(JSON.stringify({ before, first, afterFirst, completed, afterCompletion, next, afterNext, cleared, afterClear }, null, 2));
+  if (!first || !afterFirst.selected || !completed || afterCompletion.selectedDots !== 0 || !afterCompletion.route.includes("marked delivered") || !next || !afterNext.selected || afterNext.selectedDots !== 1 || afterNext.dots < 1 || !afterNext.route.includes("starts at your last delivered stop") || !cleared || afterClear.selectedDots !== 0 || !afterClear.route.includes("Route cleared") || !afterClear.distance.includes("Route cleared") || (mobile && before.viewport[0] > 390)) throw new Error("The rendered postman flow did not preserve direct next-stop routing and route clearing.");
+} finally { if (mobile) await command("Emulation.clearDeviceMetricsOverride"); socket.close(); }

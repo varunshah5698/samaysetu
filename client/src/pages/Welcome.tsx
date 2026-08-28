@@ -1,0 +1,10 @@
+import { useState } from "react";
+import { ArrowRight, KeyRound, MapPin, Phone, Route } from "lucide-react";
+import { useLocation } from "wouter";
+import { customerOtpDestination } from "@/lib/welcomeNavigation";
+
+export default function Welcome() {
+  const [, navigate] = useLocation(); const [phone, setPhone] = useState(""); const [otp, setOtp] = useState(""); const [sent, setSent] = useState(false);
+  const continueHome = () => { localStorage.setItem("samaysetu-customer-demo", "open"); navigate(customerOtpDestination); };
+  return <main className="welcome-page"><section className="welcome-hero"><div className="welcome-copy"><div className="postal-logo-large"><span>स</span><i /></div><p className="eyebrow">SAMAYSETU DELIVERY SERVICE</p><h1>Delivery time<br /><em>made simple.</em></h1><p>Choose a time that works. We check the road, weather, and postman route for you.</p><div className="welcome-benefits"><span><MapPin size={18} /> Your area checked</span><span><Route size={18} /> Delivery route checked</span></div></div><div className="welcome-login"><p className="eyebrow">STEP 1 OF 2</p><h2>Enter your mobile number</h2><span>Use any number and any OTP for this demo.</span><label htmlFor="welcome-phone">Mobile number</label><div><Phone size={20} /><input id="welcome-phone" value={phone} inputMode="numeric" onChange={event => setPhone(event.target.value)} placeholder="Enter mobile number" /></div><button className="welcome-otp" onClick={() => { setSent(true); setOtp("1234"); }}><KeyRound size={17} /> {sent ? "OTP sent" : "Get OTP"}</button><label htmlFor="welcome-otp">One-time password</label><div><KeyRound size={20} /><input id="welcome-otp" value={otp} inputMode="numeric" onChange={event => setOtp(event.target.value)} placeholder="Enter any OTP" /></div><button className="welcome-continue" onClick={continueHome}><span>Open your delivery page<small>See all delivery options</small></span><ArrowRight size={22} /></button></div></section><section className="welcome-note"><b>Want the short version?</b><button onClick={() => navigate("/quick-book")}>Use easy booking</button></section></main>;
+}

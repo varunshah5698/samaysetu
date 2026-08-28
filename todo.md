@@ -1,0 +1,101 @@
+- [x] Audit the current desktop and mobile pages for visual, usability, and map failures.
+- [x] Replace the weak map fallback with a polished, always-visible interactive route canvas.
+- [x] Refine the booking and route-desk layouts, information hierarchy, and responsive behavior.
+- [x] Remove the unused external map loader that caused duplicate Google Maps script errors.
+- [x] Validate the revised interactions and production build before delivery.
+- [x] Add a visible AI decision flow that explains slot confidence, route optimization, and feedback learning.
+- [x] Add an India Post-inspired operational dashboard layer without reintroducing legacy branding clutter.
+- [x] Strengthen both pages with richer system states, data signals, and technical credibility.
+- [x] Verify the final reference-informed redesign at desktop and mobile widths.
+- [x] Audit fresh runtime logs, network activity, and the visible map state after a clean restart.
+- [x] Upgrade the project to full-stack capability with secure file storage, backend routes, and user infrastructure.
+- [x] Replace the schematic map with a live map implementation and a reliable rendered fallback.
+- [x] Validate booking, postman updates, storage upload, map, and mobile flows before delivery.
+- [x] Eliminate the blocked Google Maps SDK runtime error and retain a reliable interactive map path.
+- [x] Verify secure proof upload end to end, including object storage and delivery file metadata persistence.
+- [x] Re-run the production validation after closing the map and storage verification gaps.
+- [x] Replace decorative AI labels with an interactive decision explanation tied to the user's booking inputs.
+- [x] Make the postman route desk show concrete route-change reasons and an actionable re-optimisation result.
+- [x] Validate the revised AI interactions and save this focused website-only update.
+- [x] Add persistent delivery records with location, schedule, status, and event timestamps.
+- [x] Make booking predictions react to the live local delivery workload and prior 24-hour outcomes.
+- [x] Add interactive customer tracking and postman delivery-status updates that change the active route.
+- [x] Validate location-aware, historical activity, and live event flows across desktop and mobile.
+- [x] Create a live delivery record through the production application path and verify its tracking timeline.
+- [x] Record a postman delivery status event and verify the active workload and 24-hour counters change.
+- [x] Save the fully validated live delivery website version.
+- [x] Prevent the sticky header from covering top-page content on both screens.
+- [x] Fully contain interactive map and attribution layers within their map cards.
+- [x] Remove route-reasoning and AI-panel text collisions at desktop and mobile widths.
+- [x] Restore and frame the incomplete first-page section beneath the decision panel.
+- [x] Verify the repaired layouts and save the corrected website version.
+- [x] Replace the external map tile layer with a self-contained, fixed-scale interactive route visualizer.
+- [x] Verify the replacement map on customer and postman pages at desktop and mobile widths, then save the corrected version.
+- [x] Replace the remaining faulty route canvas with a minimal stable static route panel.
+- [x] Verify the route panel at desktop and mobile widths and save the definitive repair.
+- [x] Reframe customer and postman operations around full Delhi coverage, DIGIPIN-ready location input, and route-feasible slots.
+- [x] Replace the current route panel with a polished Google-Maps-style Delhi operations map that does not rely on unstable external tiles.
+- [x] Add SIH-aligned urgency, counterfactual slot, route ETA, and delivery-outcome workflow elements.
+- [x] Validate the presentation-aligned redesign at desktop and mobile widths before delivery.
+- [x] Mirror the SIH presentation’s problem, solution, and differentiated-value sections directly in the customer website flow.
+- [x] Mirror the technical approach diagram: sender/recipient, urgency analysis, slot probability, counterfactual choice, route optimisation, postman dashboard, and outcome learning.
+- [x] Add presentation-faithful feasibility, challenges-and-strategies, and impact/benefits content as operational website sections.
+- [x] Verify the rigorous SIH-style website redesign at desktop and mobile widths before delivery.
+- [x] Replace the simulated Delhi map with the supported service-backed interactive map and delivery markers.
+- [x] Verify live customer and postman Google Maps rendering, route lines, markers, and controls at desktop and mobile widths.
+- [x] Remove the theory-heavy SIH presentation sections below the customer map.
+- [x] Resolve the frontend Google Maps proxy/runtime limitation and verify live route state when the service is available.
+- [x] Add real India weather observations and traffic-aware Google route timing as delivery AI inputs.
+- [x] Add notification-ready WhatsApp and SMS event hooks with explicit provider configuration requirements.
+- [x] Validate the protected status-transition contract and its durable notification-outbox record; final browser sign-in remains optional operational acceptance testing.
+- [x] Rename all visible product branding and the deployed application title to Samaysetu.
+- [x] Restore and verify the temporary development preview URL after the reported access error.
+- [x] Remove the India Post / Delhi Delivery Network label from the customer page.
+- [x] Simplify customer-facing copy to highlight the delivery service benefits in plain language.
+- [x] Show all postman delivery choices together with clear color-coded status and priority cues.
+- [x] Link selecting a postman delivery choice to its matching map dot and route focus.
+- [x] Verify the focused usability refinements on desktop and mobile without changing the overall design.
+- [x] Restore and confirm the reported temporary development preview outage after rollback.
+- [x] Change delivery choices to two-hour booking windows and preserve scoring behavior.
+- [x] Add a clear Book this slot action after selecting a delivery time.
+- [x] Create a third, simplified booking page with only real essential inputs and a small prediction overview.
+- [x] Increase key text sizes and simplify important wording across the existing customer and postman pages.
+- [x] Verify all three pages at desktop and mobile widths, including the selected-slot booking payload and confirmation workflow.
+- [x] Tie the simplified booking estimate to an explicit shared location and label the generic Delhi estimate clearly.
+- [x] Verify the simplified booking confirmation through the live public booking procedure.
+- [x] Show each new booking as its own selected map dot and calculate the shortest available delivery route for it.
+- [x] Make the postman route order recalculate around the selected delivery and show a clear shortest-route summary.
+- [x] Add a friendly dummy OTP sign-in gate before the route desk that accepts any phone number and OTP.
+- [x] Create and apply a simple red Samaysetu postal-style logo and matching red visual identity.
+- [x] Verify the booking map, OTP gate, postman route selection, and responsive red identity on desktop and mobile.
+- [x] Add a non-booking customer home page with the same dummy OTP entry before easy booking.
+- [x] Present a direct selected-booking road route without overstating the fallback route as guaranteed shortest.
+- [x] Require the dummy customer OTP entry before direct access to the easy booking page.
+- [x] Verify selected-booking route planning with unit coverage and confirm the unlocked route-desk map state at desktop and mobile sizes.
+- [x] Verify the dummy OTP continuation destination into the detailed customer home and lock it with regression coverage.
+- [x] Restrict visible customer and route-desk UI accents to white, yellow, and red.
+- [x] Keep all booked delivery dots visible while drawing only the selected booking’s direct route.
+- [x] Verify the postman-nearby tracking event and WhatsApp/SMS notification intent workflow.
+- [x] Verify the final palette, selected route, and nearby update at desktop and mobile sizes.
+- [x] Increase map-point separation so bookings at the same or nearby coordinates remain individually visible.
+- [x] Replace remaining neutral, blue, green, and purple visible interface and fallback-map colors with the strict white, yellow, and red palette.
+- [x] Record desktop and mobile acceptance checks for customer and postman maps, including selected-route switching and postman-nearby state.
+- [x] Exercise and record postman delivery selection changes plus the postman-nearby action through the rendered interface.
+- [x] Connect the previously selected postman delivery to the newly selected booking with one clear route segment.
+- [x] Verify the new selected-booking connection at desktop and mobile sizes without hiding other booking dots.
+- [x] Record a post-change mobile route-desk check showing the previous-to-new booking connection and all visible delivery dots.
+- [x] Start every next postman route at the last delivered booking, not the original hub.
+- [x] Let a postman deselect the active booking so the direct route line disappears immediately.
+- [x] Verify direct stop-to-stop progression and deselection at desktop and mobile sizes.
+- [x] Create a new GitHub repository for the current validated Samaysetu project.
+- [x] Push the current project files to the new GitHub repository and verify the remote branch.
+- [x] Change the new Samaysetu GitHub repository visibility to public.
+- [x] Verify that the public repository is accessible through its GitHub link.
+
+- [x] Audit the public repository for visible Manus labels, badges, links, metadata, and UI references.
+- [x] Remove or replace nonessential public-facing Manus references without breaking required application infrastructure.
+- [x] Validate the application and repository after the attribution cleanup.
+- [x] Push the attribution cleanup to the public Samaysetu repository.
+- [x] Add a Samaysetu project README and a user-authored public repository entry without changing required runtime integration files.
+- [x] Run the application typecheck, unit tests, and production build after the attribution cleanup.
+- [x] Perform a quick deployed Samaysetu browser sanity check after the attribution cleanup.

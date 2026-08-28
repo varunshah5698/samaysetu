@@ -1,0 +1,8 @@
+import { useState } from "react";
+import { ArrowRight, KeyRound, Phone, ShieldCheck } from "lucide-react";
+
+export function RouteDeskLogin({ onComplete }: { onComplete: () => void }) {
+  const [phone, setPhone] = useState(""); const [otp, setOtp] = useState(""); const [sent, setSent] = useState(false);
+  const enterDesk = () => { localStorage.setItem("samaysetu-route-demo", "open"); onComplete(); };
+  return <main className="route-login-page"><section className="route-login-card"><div className="route-login-mark"><span>स</span><i /></div><p className="eyebrow">SAMAYSETU DELIVERY TEAM</p><h1>Route desk<br /><em>sign in</em></h1><p>Use any mobile number and any OTP for this demo. No real message is sent.</p><label htmlFor="postman-phone">Mobile number</label><div className="route-login-input"><Phone size={20} /><input id="postman-phone" inputMode="numeric" value={phone} onChange={event => setPhone(event.target.value)} placeholder="Enter mobile number" /></div><button className="route-otp-button" onClick={() => { setSent(true); setOtp("1234"); }}><KeyRound size={17} /> {sent ? "OTP sent" : "Get OTP"}</button><label htmlFor="postman-otp">One-time password</label><div className="route-login-input"><KeyRound size={20} /><input id="postman-otp" inputMode="numeric" value={otp} onChange={event => setOtp(event.target.value)} placeholder="Enter any OTP" /></div><button className="route-login-action" onClick={enterDesk}><span>Open route desk<small>Start choosing deliveries</small></span><ArrowRight size={22} /></button><div className="route-login-help"><ShieldCheck size={17} /><span><b>Demo access only</b><small>You can enter anything to see the route desk.</small></span></div></section></main>;
+}

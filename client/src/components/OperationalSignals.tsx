@@ -1,0 +1,8 @@
+import { BellRing, CloudSun, MessageSquareText, Route, Timer } from "lucide-react";
+import { trpc } from "@/lib/trpc";
+
+export function OperationalSignals() {
+  const { data, isLoading } = trpc.operations.snapshot.useQuery({ latitude: 28.6139, longitude: 77.2090 }, { refetchInterval: 120_000 });
+  if (isLoading || !data) return <section className="operational-signals loading"><span>Checking today’s road and weather conditions…</span></section>;
+  return <section className="operational-signals" aria-label="Samaysetu delivery benefits"><div className="signals-heading"><p className="eyebrow">WHY SAMAYSETU</p><h3>Easy booking. Smarter delivery.</h3><small>Updated {new Date(data.checkedAt).toLocaleTimeString()}</small></div><div className="signal-card"><CloudSun size={18} /><span><b>Weather checked for you</b><small>{data.weather.label}. We use local conditions to suggest a safer delivery time.</small></span><em>{data.weather.scoreImpact ? "Time adjusted" : "Checked"}</em></div><div className="signal-card"><Route size={18} /><span><b>Road traffic checked for you</b><small>{data.traffic.durationMinutes ? `${data.traffic.durationMinutes} minute route checked. ` : "Route checked. "}We suggest times the postman can realistically keep.</small></span><em>{data.traffic.delayMinutes ? "Time adjusted" : "Checked"}</em></div><div className="signal-card notification"><BellRing size={18} /><span><b>Updates ready when needed</b><small>Booking and delivery updates can be sent through SMS or WhatsApp when a service provider is connected.</small></span><em><MessageSquareText size={14} /> Ready to connect</em></div></section>;
+}

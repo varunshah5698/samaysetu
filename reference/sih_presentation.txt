@@ -1,0 +1,388 @@
+SMART INDIA HACKATHON 2026
+TITLE PAGE
+Problem Statement ID - DJS_26_SW_14
+Problem Statement Title- AI based
+Customized
+time
+slot
+Delivery
+of
+Articles/Parcels for India Post
+Theme- Transport and Logistics
+PS Category- Software
+Team ID- DJSW_43
+Team Name - Travis Tanner
+
+IDEA TITLE
+
+Travis
+Tanner
+
+PROBLEMS FACED
+
+PROPOSED SOLUTION
+
+Deliveries often clash with work hours causing repeat
+attempts or Post Office visits due to recipient absence.
+Re-attempts waste Postman time and delivery capacity.
+Failed deliveries cause dissatisfaction and return to sender.
+Potential untapped for newer deliveries to be carried out,
+which could make deliveries faster for everyone else.
+
+Slot-booking service within India Post’s Advanced
+Postal Technology (APT) system.
+Sender chooses preferred delivery window.
+Recipient (&sender) can edit it before delivery day.
+Multi-channel access via Web, WhatsApp & SMS.
+
+HOW IT SOLVES THE PROBLEM
+
+WHAT MAKES IT DIFFERENT
+
+DIGIPIN (4m x 4m digital grid address) provides
+precise location for every address to AI engine.
+Traffic, weather, construction and festivals are
+considered to adjust the routing.
+Each slot is checked against the postman’s route.
+Reduces repeated delivery attempts and
+re-delivery workload.
+
+Route-aware slots prevent postman overload.
+We show only route-feasible slots.
+Customers see the trade-off and choose the
+window with higher success.
+Counterfactual slots compare possible delivery
+windows. (chosen slot v/s best alternative)
+
+@SIH Idea submission- Template
+
+2
+
+TECHNICAL APPROACH
+
+Travis
+Tanner
+
+AI ENGINE
+
+TECHNOLOGIES USED
+Web: React.js,
+Tailwind CSS, FastAPI
+
+Database:
+PostgreSQL +
+PostGIS, Kafka
+Cloud:
+MeghRaj 2.0 as APT
+already runs on it
+Model: Python,
+LightGBM, MLflow,
+Airflow
+Infra: Docker,
+Kubernetes, CI/CD
+Channels: SMS
+gateway, WhatsApp
+API
+Routing: Mappls /
+OSRM distances
+Weather: Weather API
+for route optimisation
+
+SENDER /
+RECIPIENT
+
+APT + APIs
+
+Chooses preferred
+delivery slot
+
+Connects with
+India Post
+
+URGENCY
+ANALYSIS
+
+• Urgency per
+article
+• Legal,
+medical first
+• Type and
+deadline
+
+Extends existing
+infrastructure
+
+SLOT
+PROBABILITY
+
+• Odds per
+window
+• Safe slots
+only
+• No broken
+promises
+
+COUNTERFACTUAL
+SLOT
+• Suggests better
+slot
+• Recipient
+decides
+• Each choice
+increases dataset.
+
+ROUTE
+OPTIMISATION
+
+• Best route and
+ETA, taking
+
+POSTMAN /
+DAK MITRA
+
+Slot + Route +
+ETA
+
+Weather
+Traffic
+Festivals
+
+into account.
+
+DELIVERY
+
+DASHBOARD
+
+AI TRAINING & CONTINUOUS MODEL LEARNING
+
+Route & ETA monitoring,
+managing delivery slots,
+live parcel tracking
+
+• Trained on historical + live data • Accuracy improves over time
+• Learns from every attempt
+• Adapts to new patterns
+
+MODEL IMPROVEMENT
+Better predictions, higher efficiency
+
+DATA
+Captured, validated, stored
+
+@SIH Idea submission- Template
+
+Success /
+Reschedule
+
+DELIVERY OUTCOME
+Successful / failed / rescheduled
+
+3
+
+Travis
+Tanner
+
+FEASIBILITY AND VIABILITY
+
+WHY IT IS FEASIBLE
+
+CHALLENGES & STRATEGIES
+
+Existing Digital Foundation
+Builds on India Post's APT ecosystem.
+Compatible with MeghRaj 2.0 cloud infrastructure.
+Uses existing GPS and DIGIPIN capabilities.
+
+Operational Compatibility
+Works with existing booking-to-delivery workflows.
+No dedicated customer app required.
+Web, WhatsApp and SMS provide lightweight access.
+
+Scalable Deployment
+Start with simulation and controlled pilot.
+Validate slot predictions using real delivery outcome.
+Expand gradually after operational validation.
+
+SIH IDEA SUBMISSION • FEASIBILITY & VIABILITY
+
+CHALLENGE
+
+STRATEGY
+
+Competing slot
+demand
+
+AI assigns non-overlapping delivery
+waves based on micro-segmentation.
+
+Dynamic road
+conditions
+
+Re-optimise routes for traffic and other
+disruptions.
+
+Limited initial
+training data
+
+Start with rules and learn from pilot
+outcomes.
+
+Incorrect slot
+predictions
+
+Show confidence scores and offer safer
+alternatives.
+
+Connectivity & data
+privacy
+
+Use API-based integration with secure,
+role-based access to existing systems.
+
+@SIH Idea submission- Template
+
+4
+
+04
+
+IMPACT AND BENEFITS
+
+Travis
+Tanner
+
+IMPACT ON TARGET AUDIENCE
+SENDER
+RECEIVER
+Higher delivery
+certainty
+Fewer undelivered
+articles
+Better customer
+experience
+
+Delivery fits their
+schedule
+Fewer missed
+deliveries
+No unnecessary
+Post Office visits
+
+POSTMAN
+
+INDIA POST
+
+Fewer repeat
+attempts
+Better route
+utilisation
+More deliveries
+per working day
+
+Modernises India Post
+as a citizen-centric
+service.
+Very low re-delivery
+workload.
+Higher first-attempt
+success.
+
+BENEFITS
+Social:
+Passports, legal notices, admit cards, medicines arrive on
+the first time itself.
+SMS and missed call, no smartphone, data or specific
+language needed (regional languages used).
+No working day or day’s wage lost because the recipient
+has to go collect some important article.
+
+Economic:
+Every avoided re-attempt saves postman-time + trip cost.
+More delivery capacity (revenue) using same workforce.
+A window India Post can keep wins e-commerce last-mile
+contracts.
+
+Environmental:
+Repeat attempts are wasted kilometres, hence fuel and
+CO₂ saved directly. Better for the environment.
+Reduces road congestion.
+
+@SIH Idea submission- Template
+
+5
+
+Travis
+Tanner
+
+RESEARCH AND REFERENCES
+DESCRIPTION
+
+HOW IT WAS USED
+
+PIB: Rollout of IT 2.0 / APT, 2025
+
+India Post's micro-services, Open API, MeghRaj
+2.0 stack
+
+Proved slot-booking can be a module, not an overhaul
+
+DIGIPIN Technical Document, DoP
+
+10-character geo-code on a 4m × 4m grid
+
+Address-level precision for per-flat slot prediction
+
+Digital Personal Data Protection Act, 2023
+
+Purpose limitation and data minimisation duties
+
+Shaped broad time bands; postman sees only that day's
+window
+
+Agatz et al. (2011), Transportation Science
+45(3)
+
+Choosing which slots to offer per area, cost vs
+service
+
+Anchors logic of showing only route-feasible slots
+
+Amorim, DeHoratius, Eng-Larsson & Martins
+(2024), Management Science 70(11)
+
+Customer preferences for delivery service attributes
+in attended home delivery
+
+Basis of the counterfactual nudge, we show the trade-off,
+instead of override
+
+RESEARCH PAPERS
+
+Çelik, Martin, Schrotenboer & Van Woensel Acceptance under time-dependent, stochastic travel
+(2025), Transportation Science 59(2)
+times
+Baty et al. (2024), Transportation Science
+Insertion heuristics for routing with time windows
+58(4)
+
+Feasibility check at booking, with traffic variability
+Test if a stop fits the existing beat, not full re-planning
+
+Derrow-Pinion et al. (2021), CIKM '21
+
+GNN ETA estimator in production at Google Maps
+
+Our route-and-ETA layer under live traffic
+
+Grinsztajn et al. (2022), NeurIPS 35
+
+Gradient boosting optimised for CPU-only
+hardware
+
+Justifying zero-GPU deployment on existing
+infrastructure
+
+@SIH Idea submission- Template
+
+6
+
+
